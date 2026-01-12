@@ -3,7 +3,7 @@ import { Network } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="border-t py-12 px-8 md:px-16 lg:px-32 xl:px-48">
+    <footer className="border-t py-8 md:py-12 px-4 md:px-16 lg:px-32 xl:px-48">
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">

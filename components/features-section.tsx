@@ -6,19 +6,19 @@ import { Search, Users, Check, ChevronDown } from "lucide-react"
 import { BlurReveal } from "@/components/BlurReveal"
 
 const people = [
-  { name: "Thomas Hamill", initials: "TH", position: "Head of Battery Systems", company: "Rivian", strength: "strong" },
-  { name: "Ruben Mann", initials: "RM", position: "Battery Engineer", company: "Tesla", strength: "medium" },
-  { name: "John Beer", initials: "JB", position: "Senior Electrical Engineer", company: "Tesla", strength: "medium" },
-  { name: "Gilberto Mraz", initials: "GM", position: "Customer Relations", company: "Lucid", strength: "weak" },
+  { name: "Steve", initials: "ST", location: "Toronto, ON", role: "Construction Company Owner", relSummary: "2 Deals ongoing", openDeals: 3 },
+  { name: "Michael Chang", initials: "MC", location: "Vancouver, BC", role: "Steel Supplier", relSummary: "5 Deals completed", openDeals: 1 },
+  { name: "Sarah Miller", initials: "SM", location: "Montreal, QC", role: "Logistics Partner", relSummary: "1 Deal ongoing", openDeals: 4 },
+  { name: "David Chen", initials: "DC", location: "New York, NY", role: "Equipment Buyer", relSummary: "New Contact", openDeals: 2 },
 ]
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="py-8 md:py-12 px-8 md:px-16 lg:px-32 xl:px-48">
-      <div className="bg-background rounded-3xl md:rounded-[3rem] py-16 md:py-24 px-8 md:px-12">
+    <section id="features" className="py-8 md:py-12 px-4 md:px-16 lg:px-32 xl:px-48">
+      <div className="bg-background rounded-[2rem] md:rounded-[3rem] py-12 md:py-24 px-4 md:px-12">
         <div className="mx-auto max-w-6xl">
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <BlurReveal delay={0.1}>
               <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6 text-balance">Get precise results</h2>
             </BlurReveal>
@@ -42,69 +42,78 @@ export function FeaturesSection() {
 
           <div className="bg-card border rounded-2xl shadow-lg overflow-hidden mb-16">
             {/* Filter Bar */}
-            <div className="flex items-center gap-2 px-6 py-4 border-b bg-muted/30 overflow-x-auto">
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 text-sm">
+            <div className="flex items-center gap-2 px-4 md:px-6 py-4 border-b bg-muted/30 overflow-x-auto no-scrollbar">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-100 text-amber-800 text-sm whitespace-nowrap">
                 <span>Location</span>
                 <span className="font-medium">is any of</span>
                 <span className="bg-amber-200 px-2 py-0.5 rounded-full text-xs">3 Places</span>
               </div>
-              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted text-sm">
+              <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-muted text-sm whitespace-nowrap">
                 <span>X relationship</span>
                 <span className="font-medium">is</span>
                 <span>follows you</span>
               </div>
-              <ChevronDown className="h-4 w-4 text-muted-foreground" />
+              <ChevronDown className="h-4 w-4 text-muted-foreground shrink-0" />
             </div>
 
-            {/* Table Header */}
-            <div className="grid grid-cols-12 gap-4 px-6 py-3 border-b text-sm text-muted-foreground">
+            {/* Table Header - Hidden on Mobile */}
+            <div className="hidden md:grid grid-cols-12 gap-4 px-6 py-3 border-b text-sm text-muted-foreground">
               <div className="col-span-1"></div>
               <div className="col-span-3">Name</div>
-              <div className="col-span-2">Relationship Str.</div>
-              <div className="col-span-3">Position</div>
-              <div className="col-span-3">Experience</div>
+              <div className="col-span-2">Open Deals</div>
+              <div className="col-span-3">Role</div>
+              <div className="col-span-3">Relationship</div>
             </div>
 
             {/* Table Rows */}
             {people.map((person, index) => (
               <div
                 key={person.name}
-                className={`grid grid-cols-12 gap-4 px-6 py-4 items-center hover:bg-muted/30 transition-colors ${index !== people.length - 1 ? "border-b" : ""
+                className={`group flex flex-col md:grid md:grid-cols-12 gap-3 md:gap-4 px-4 md:px-6 py-4 md:items-center hover:bg-muted/30 transition-colors ${index !== people.length - 1 ? "border-b" : ""
                   }`}
               >
-                <div className="col-span-1">
-                  <input type="checkbox" className="rounded border-muted-foreground/30" />
+                {/* Mobile: Top Row with Avatar, Name, Relationship */}
+                <div className="flex items-center justify-between md:contents">
+                  <div className="flex items-center gap-3 md:col-span-4 lg:col-span-4">
+                    <div className="md:hidden">
+                      <input type="checkbox" className="rounded border-muted-foreground/30" />
+                    </div>
+                    <div className="hidden md:block md:col-span-1">
+                      <input type="checkbox" className="rounded border-muted-foreground/30" />
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      <Avatar className="h-10 w-10">
+                        <AvatarFallback className="bg-muted text-muted-foreground text-sm">{person.initials}</AvatarFallback>
+                      </Avatar>
+                      <div className="block md:hidden">
+                        <span className="font-medium block">{person.name}</span>
+                        <span className="text-xs text-muted-foreground">{person.location}</span>
+                      </div>
+                      <span className="font-medium hidden md:block">{person.name}</span>
+                    </div>
+                  </div>
+
+                  {/* Mobile: Relationship (Right aligned on top row? maybe simple indicator) */}
+                  {/* Hidden on mobile, shown in name block above */}
                 </div>
-                <div className="col-span-3 flex items-center gap-3">
-                  <Avatar className="h-10 w-10">
-                    <AvatarFallback className="bg-muted text-muted-foreground text-sm">{person.initials}</AvatarFallback>
-                  </Avatar>
-                  <span className="font-medium">{person.name}</span>
-                </div>
-                <div className="col-span-2">
+
+                {/* Desktop: Open Deals Column */}
+                <div className="hidden md:block md:col-span-2">
                   <div className="flex items-center gap-1">
-                    {[1, 2, 3].map((i) => (
-                      <div
-                        key={i}
-                        className={`w-3 h-3 rounded-full ${person.strength === "strong"
-                          ? "bg-emerald-500"
-                          : person.strength === "medium" && i <= 2
-                            ? "bg-amber-500"
-                            : person.strength === "weak" && i === 1
-                              ? "bg-gray-400"
-                              : "bg-gray-200"
-                          }`}
-                      />
-                    ))}
+                    <span className="font-medium text-lg">{person.openDeals}</span>
                   </div>
                 </div>
-                <div className="col-span-3">
-                  <p className="font-medium">{person.position}</p>
-                  <p className="text-sm text-muted-foreground">@ {person.company}</p>
+
+                {/* Position and Experience - Mobile: Stacked below */}
+                <div className="md:col-span-3 pl-[3.25rem] md:pl-0">
+                  <p className="font-medium text-sm md:text-base">{person.role}</p>
+                  <p className="text-sm text-muted-foreground">{person.location}</p>
                 </div>
-                <div className="col-span-3 flex items-center gap-2">
-                  <Check className="h-4 w-4 text-emerald-500" />
-                  <span className="text-sm text-muted-foreground">EV Experience</span>
+
+                <div className="md:col-span-3 pl-[3.25rem] md:pl-0 flex items-center gap-2">
+                  <Check className="h-4 w-4 text-emerald-500 shrink-0" />
+                  <span className="text-sm text-muted-foreground">{person.relSummary}</span>
                 </div>
               </div>
             ))}
@@ -165,7 +174,7 @@ export function FeaturesSection() {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </div >
+    </section >
   )
 }

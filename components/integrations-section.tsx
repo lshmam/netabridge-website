@@ -3,14 +3,15 @@
 import { Button } from "@/components/ui/button"
 import { Search, FileCode, MoreVertical } from "lucide-react"
 import { BlurReveal } from "@/components/BlurReveal"
+import Image from "next/image"
 
 export function IntegrationsSection() {
   return (
-    <section id="integrations" className="py-8 md:py-12 px-8 md:px-16 lg:px-32 xl:px-48">
-      <div className="bg-background rounded-3xl md:rounded-[3rem] py-16 md:py-24 px-8 md:px-12">
+    <section id="integrations" className="py-8 md:py-12 px-4 md:px-16 lg:px-32 xl:px-48">
+      <div className="bg-background rounded-[2rem] md:rounded-[3rem] py-12 md:py-24 px-4 md:px-12">
         {/* Network Data Section */}
-        <div className="mx-auto max-w-6xl mb-32">
-          <div className="bg-muted/30 rounded-3xl p-8 md:p-12 lg:p-16">
+        <div className="mx-auto max-w-6xl mb-20 md:mb-32">
+          <div className="bg-muted/30 rounded-3xl p-6 md:p-12 lg:p-16">
             <div className="grid gap-12 lg:grid-cols-2 items-center">
               <div>
                 <div className="flex items-center gap-2 text-muted-foreground mb-6">
@@ -75,43 +76,57 @@ export function IntegrationsSection() {
               {/* Integration Icons Network */}
               <div className="relative h-80">
                 <div className="absolute inset-0 flex items-center justify-center">
+                  {/* Pulsing Waves */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    {[0, 1, 2].map((i) => (
+                      <div
+                        key={i}
+                        className="absolute w-24 h-24 rounded-full border border-blue-500/30 bg-blue-500/5 animate-ripple"
+                        style={{
+                          animationDelay: `${i * 1}s`,
+                          zIndex: 0,
+                        }}
+                      />
+                    ))}
+                  </div>
+
                   {/* Center Icon */}
-                  <div className="absolute w-14 h-14 rounded-full bg-card border-2 shadow-lg flex items-center justify-center z-10">
-                    <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                    </svg>
+                  <div className="absolute w-14 h-14 rounded-full bg-card border-2 shadow-lg flex items-center justify-center z-10 overflow-hidden p-2">
+                    <Image src="/app-icons/hubspot.png" alt="HubSpot" width={32} height={32} className="object-contain" />
                   </div>
 
                   {/* Left Side Icons */}
-                  <div className="absolute left-0 top-1/4 w-12 h-12 rounded-full bg-card border shadow-md flex items-center justify-center">
-                    <span className="font-bold text-blue-600">G</span>
+                  <div className="absolute left-[20%] top-[20%] w-12 h-12 rounded-full bg-card border shadow-md flex items-center justify-center p-2.5 z-10 -translate-x-1/2 -translate-y-1/2">
+                    <Image src="/app-icons/gmail.png" alt="Gmail" width={24} height={24} className="object-contain" />
                   </div>
-                  <div className="absolute left-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-card border shadow-md flex items-center justify-center">
-                    <span className="font-bold text-blue-700">in</span>
+                  <div className="absolute left-[10%] top-[50%] w-12 h-12 rounded-full bg-card border shadow-md flex items-center justify-center p-2.5 z-10 -translate-x-1/2 -translate-y-1/2">
+                    <Image src="/app-icons/linkedin.png" alt="LinkedIn" width={24} height={24} className="object-contain" />
                   </div>
-                  <div className="absolute left-0 bottom-1/4 w-12 h-12 rounded-full bg-card border shadow-md flex items-center justify-center">
-                    <span className="font-bold">X</span>
+                  <div className="absolute left-[20%] bottom-[20%] w-12 h-12 rounded-full bg-card border shadow-md flex items-center justify-center p-2.5 z-10 -translate-x-1/2 translate-y-1/2">
+                    <Image src="/app-icons/twitter.png" alt="Twitter" width={24} height={24} className="object-contain" />
                   </div>
-                  <div className="absolute left-16 bottom-0 w-12 h-12 rounded-full bg-card border shadow-md flex items-center justify-center">
-                    <span className="text-green-500">📞</span>
+                  <div className="absolute left-[40%] bottom-[5%] w-12 h-12 rounded-full bg-card border shadow-md flex items-center justify-center p-2.5 z-10 -translate-x-1/2 translate-y-1/2">
+                    <Image src="/app-icons/whatsapp.png" alt="WhatsApp" width={24} height={24} className="object-contain" />
                   </div>
 
                   {/* Right Side Icons */}
-                  <div className="absolute right-0 top-1/4 w-12 h-12 rounded-full bg-card border shadow-md flex items-center justify-center">
-                    <span className="text-blue-500">💬</span>
+                  <div className="absolute right-[20%] top-[20%] w-12 h-12 rounded-full bg-card border shadow-md flex items-center justify-center p-2.5 z-10 translate-x-1/2 -translate-y-1/2">
+                    <Image src="/app-icons/apple.png" alt="Apple" width={24} height={24} className="object-contain" />
                   </div>
-                  <div className="absolute right-8 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-card border shadow-md flex items-center justify-center">
-                    <span className="text-orange-500">📊</span>
+                  <div className="absolute right-[10%] top-[50%] w-12 h-12 rounded-full bg-card border shadow-md flex items-center justify-center p-2.5 z-10 translate-x-1/2 -translate-y-1/2">
+                    <Image src="/app-icons/instagram (1).png" alt="Instagram" width={24} height={24} className="object-contain" />
                   </div>
-                  <div className="absolute right-0 bottom-1/4 w-12 h-12 rounded-full bg-card border shadow-md flex items-center justify-center">
-                    <span className="text-green-600">📋</span>
+                  <div className="absolute right-[20%] bottom-[20%] w-12 h-12 rounded-full bg-card border shadow-md flex items-center justify-center p-2.5 z-10 translate-x-1/2 translate-y-1/2">
+                    <div className="w-full h-full bg-emerald-500 rounded-full flex items-center justify-center text-white font-bold text-xs">
+                      +5
+                    </div>
                   </div>
 
                   {/* Connection Lines - using SVG */}
                   <svg className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}>
                     <line
                       x1="20%"
-                      y1="25%"
+                      y1="20%"
                       x2="50%"
                       y2="50%"
                       stroke="currentColor"
@@ -119,7 +134,7 @@ export function IntegrationsSection() {
                       className="text-border"
                     />
                     <line
-                      x1="15%"
+                      x1="10%"
                       y1="50%"
                       x2="50%"
                       y2="50%"
@@ -129,7 +144,7 @@ export function IntegrationsSection() {
                     />
                     <line
                       x1="20%"
-                      y1="75%"
+                      y1="80%"
                       x2="50%"
                       y2="50%"
                       stroke="currentColor"
@@ -137,8 +152,8 @@ export function IntegrationsSection() {
                       className="text-border"
                     />
                     <line
-                      x1="30%"
-                      y1="90%"
+                      x1="40%"
+                      y1="95%"
                       x2="50%"
                       y2="50%"
                       stroke="currentColor"
@@ -147,7 +162,7 @@ export function IntegrationsSection() {
                     />
                     <line
                       x1="80%"
-                      y1="25%"
+                      y1="20%"
                       x2="50%"
                       y2="50%"
                       stroke="currentColor"
@@ -155,7 +170,7 @@ export function IntegrationsSection() {
                       className="text-border"
                     />
                     <line
-                      x1="85%"
+                      x1="90%"
                       y1="50%"
                       x2="50%"
                       y2="50%"
@@ -165,7 +180,7 @@ export function IntegrationsSection() {
                     />
                     <line
                       x1="80%"
-                      y1="75%"
+                      y1="80%"
                       x2="50%"
                       y2="50%"
                       stroke="currentColor"

@@ -72,7 +72,7 @@ export function FeaturesGrid() {
                 </div>
 
                 {/* Bento Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-3 max-w-6xl mx-auto">
                     {features.map((feature, index) => {
                         // Bento layout - items with images are larger
                         const isLarge = !!feature.image
@@ -80,13 +80,17 @@ export function FeaturesGrid() {
                             ? 'lg:col-span-2 lg:row-span-2'
                             : ''
 
+                        // Mobile height adjustments
+                        const mobileHeight = isLarge ? 'min-h-[250px]' : 'min-h-[180px]'
+
                         return (
                             <div
                                 key={index}
                                 className={`
                                     group ${gridClass}
                                     relative flex flex-col justify-between overflow-hidden
-                                    ${isLarge ? 'min-h-[300px] lg:min-h-[400px]' : 'min-h-[200px]'}
+                                    ${isLarge ? `min-h-[300px] lg:min-h-[400px]` : `min-h-[200px]`}
+                                    ${mobileHeight} md:min-h-[200px]
                                     p-6 rounded-2xl
                                     bg-neutral-100
                                     border-2 border-slate-200

@@ -78,17 +78,17 @@ const recentActivity = [
 
 export function NetworkDashboard() {
     return (
-        <section className="py-8 md:py-12 px-8 md:px-16 lg:px-32 xl:px-48">
-            <div className="relative rounded-3xl md:rounded-[3rem] overflow-hidden py-16 md:py-24">
+        <section className="py-8 md:py-12 px-4 md:px-16 lg:px-32 xl:px-48">
+            <div className="relative rounded-[2rem] md:rounded-[3rem] overflow-hidden py-12 md:py-24">
                 {/* Background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#0a0f1a] via-[#0d1526] to-[#0a0f1a]">
                     <ParticlesBackground />
                 </div>
 
-                <div className="relative z-10 px-8 md:px-16 lg:px-32 xl:px-48">
+                <div className="relative z-10 px-4 md:px-16 lg:px-32 xl:px-48">
                     <div className="mx-auto max-w-7xl">
                         {/* Header */}
-                        <div className="text-center mb-16">
+                        <div className="text-center mb-12 md:mb-16">
                             <BlurReveal delay={0.1}>
                                 <Badge variant="outline" className="mb-4 border-white/20 text-white/80 bg-white/5">
                                     Network Intelligence
@@ -110,7 +110,7 @@ export function NetworkDashboard() {
                             {/* Left Column - Leaderboard */}
                             <div className="lg:col-span-5">
                                 <Card className="bg-black/40 border-white/10 backdrop-blur-xl">
-                                    <CardContent className="p-6">
+                                    <CardContent className="p-4 md:p-6">
                                         <div className="flex items-center justify-between mb-6">
                                             <h3 className="text-xl font-semibold text-white">Network Leaderboard</h3>
                                             <div className="flex items-center gap-2 text-emerald-400 text-2xl font-bold">

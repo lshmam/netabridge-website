@@ -7,8 +7,8 @@ import Squares from "@/components/Squares"
 
 export function CTASection() {
   return (
-    <section className="py-8 md:py-12 px-8 md:px-16 lg:px-32 xl:px-48">
-      <div className="relative bg-muted/30 rounded-3xl md:rounded-[3rem] py-16 md:py-24 px-8 md:px-12 overflow-hidden">
+    <section className="py-8 md:py-12 px-4 md:px-16 lg:px-32 xl:px-48">
+      <div className="relative bg-muted/30 rounded-[2rem] md:rounded-[3rem] py-12 md:py-24 px-4 md:px-12 overflow-hidden">
         {/* Animated Squares Background */}
         <Squares
           direction="diagonal"
@@ -33,7 +33,7 @@ export function CTASection() {
           </BlurReveal>
           <BlurReveal delay={0.3}>
             <Button size="lg" className="rounded-full px-10 py-6 text-lg">
-              <Sparkles className="h-5 w-5 mr-2" />
+              {/* <Sparkles className="h-5 w-5 mr-2" /> */}
               Activate Your Network
             </Button>
           </BlurReveal>

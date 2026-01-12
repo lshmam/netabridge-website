@@ -67,7 +67,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${neueMontreal.variable} ${britannica.variable} font-sans antialiased`}>
+      <body className={`${neueMontreal.variable} ${britannica.variable} font-sans antialiased overflow-x-hidden`}>
         {children}
         <Analytics />
       </body>
