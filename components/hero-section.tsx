@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input"
 import { ArrowRight } from "lucide-react"
 import { ParticlesBackground } from "@/components/particles-background"
 import { BlurReveal } from "@/components/BlurReveal"
+import { BorderBeam } from "@/components/ui/border-beam"
 
 export function HeroSection() {
 
@@ -32,9 +33,13 @@ export function HeroSection() {
           {/* Action Buttons */}
           <BlurReveal delay={0.6}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button size="lg" className="rounded-full bg-white text-black hover:bg-white/90 px-8 py-6 text-lg w-full sm:w-auto">
-                Post a Supply
-              </Button>
+              {/* Wrapper for BorderBeam effect */}
+              <div className="relative overflow-hidden rounded-full w-full sm:w-auto">
+                <Button size="lg" className="relative rounded-full bg-white text-black hover:bg-white/90 px-8 py-6 text-lg w-full">
+                  Post a Supply
+                </Button>
+                <BorderBeam size={200} duration={4} className="from-transparent via-blue-500 to-transparent" />
+              </div>
               <Button size="lg" variant="outline" className="rounded-full border-white/20 bg-white/5 text-white hover:bg-white/10 hover:text-white px-8 py-6 text-lg w-full sm:w-auto">
                 Post a Demand
               </Button>

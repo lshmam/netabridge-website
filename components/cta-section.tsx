@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Sparkles } from "lucide-react"
 import { BlurReveal } from "@/components/BlurReveal"
 import Squares from "@/components/Squares"
+import { BorderBeam } from "@/components/ui/border-beam"
 
 export function CTASection() {
   return (
@@ -32,10 +33,13 @@ export function CTASection() {
             </p>
           </BlurReveal>
           <BlurReveal delay={0.3}>
-            <Button size="lg" className="rounded-full px-10 py-6 text-lg">
-              {/* <Sparkles className="h-5 w-5 mr-2" /> */}
-              Activate Your Network
-            </Button>
+            {/* Wrapper for BorderBeam effect */}
+            <div className="relative overflow-hidden rounded-full inline-block">
+              <Button size="lg" className="relative rounded-full px-10 py-6 text-lg">
+                Activate Your Network
+              </Button>
+              <BorderBeam size={200} duration={4} className="from-transparent via-purple-500 to-transparent" />
+            </div>
           </BlurReveal>
           <p className="text-sm text-muted-foreground mt-6">No credit card required. Free forever.</p>
         </div>

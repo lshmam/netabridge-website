@@ -5,6 +5,7 @@ import { IntegrationsSection } from "@/components/integrations-section"
 import { CTASection } from "@/components/cta-section"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { BentoGrid } from "@/components/bento-grid"
 
 export default function Home() {
   return (
@@ -13,7 +14,8 @@ export default function Home() {
       <main>
         <HeroSection />
         <FeaturesSection />
-        <NetworkDashboard />
+        <BentoGrid />
+        {/* <NetworkDashboard /> */}
         <IntegrationsSection />
         <CTASection />
       </main>

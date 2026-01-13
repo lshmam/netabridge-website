@@ -1,9 +1,11 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Search, FileCode, MoreVertical } from "lucide-react"
+import { Search, FileCode, MoreVertical, Command } from "lucide-react"
 import { BlurReveal } from "@/components/BlurReveal"
 import Image from "next/image"
+import { Ripple } from "@/components/ui/ripple"
+import { BentoGrid } from "@/components/bento-grid"
 
 export function IntegrationsSection() {
   return (
@@ -77,17 +79,8 @@ export function IntegrationsSection() {
               <div className="relative h-80">
                 <div className="absolute inset-0 flex items-center justify-center">
                   {/* Pulsing Waves */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    {[0, 1, 2].map((i) => (
-                      <div
-                        key={i}
-                        className="absolute w-24 h-24 rounded-full border border-blue-500/30 bg-blue-500/5 animate-ripple"
-                        style={{
-                          animationDelay: `${i * 1}s`,
-                          zIndex: 0,
-                        }}
-                      />
-                    ))}
+                  <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
+                    <Ripple mainCircleSize={150} numCircles={4} />
                   </div>
 
                   {/* Center Icon */}
@@ -194,108 +187,70 @@ export function IntegrationsSection() {
           </div>
         </div>
 
-        {/* Feature Cards Section - Bento Grid */}
-        <div className="mx-auto max-w-6xl">
-          <BlurReveal delay={0.1}>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-300 bg-amber-50 text-amber-800 text-sm font-medium mb-12">
-              <span>🔑</span>
-              Unlock Your Network
-            </div>
-          </BlurReveal>
-
-          {/* Bento Grid - Exact Reference Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-[180px] gap-3 max-w-6xl mx-auto">
-            {/* Large Card 1 - Real-Time Sync (Top Left, 2 cols x 2 rows) */}
-            <div className="lg:col-span-2 lg:row-span-2 group relative flex flex-col justify-between overflow-hidden p-6 rounded-2xl bg-emerald-50 border-2 border-slate-200 transition-all duration-300 ease-out hover:scale-[1.02] hover:bg-emerald-100/50">
-              <div className="flex items-center justify-between mb-4 relative z-10">
-                <span className="text-xs font-medium uppercase tracking-wider text-emerald-700">SYNC</span>
-              </div>
-              <div className="mt-auto relative z-10">
-                <h3 className="font-medium mb-2 text-xl lg:text-2xl text-emerald-900">
-                  Real-Time Network Updates
-                </h3>
-                <p className="leading-relaxed text-base text-emerald-700">
-                  Never miss important changes. Track new roles, relocations, funding rounds, and announcements across your entire network automatically.
-                </p>
-              </div>
+        {/* AI Assist Section */}
+        <div className="mx-auto max-w-6xl mb-20 md:mb-32">
+          <div className="relative bg-[#4F86F7] rounded-[2.5rem] p-6 md:p-12 lg:p-16 overflow-hidden">
+            {/* Background Animation */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-30" style={{ "--foreground": "oklch(1 0 0)" } as React.CSSProperties}>
+              <Ripple mainCircleSize={300} numCircles={6} />
             </div>
 
-            {/* Small Card - Smart Search (Top Right, Row 1) */}
-            <div className="group relative flex flex-col justify-between overflow-hidden p-6 rounded-2xl bg-neutral-100 border-2 border-slate-200 transition-all duration-300 ease-out hover:scale-[1.02] hover:bg-neutral-50">
-              <div className="flex items-center justify-between mb-4 relative z-10">
-                <span className="text-xs font-medium uppercase tracking-wider text-neutral-500">SEARCH</span>
+            <div className="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Side - Text */}
+              <div className="order-2 lg:order-1">
+                <BlurReveal delay={0.1}>
+                  <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-6">
+                    AI that answers questions for you, real-time
+                  </h2>
+                </BlurReveal>
+                <BlurReveal delay={0.2}>
+                  <p className="text-lg md:text-xl text-white/90 font-medium leading-relaxed">
+                    Cluely uses the screen, transcript, and AI to answer questions for you, live.
+                  </p>
+                </BlurReveal>
               </div>
-              <div className="mt-auto relative z-10">
-                <h3 className="font-medium mb-2 text-lg text-black">
-                  Natural Language Search
-                </h3>
-                <p className="leading-relaxed text-sm text-neutral-600">
-                  Ask questions naturally. Find the right connections instantly without complex filters.
-                </p>
-              </div>
-            </div>
 
-            {/* Small Card - API Integration (Top Right, Row 1) */}
-            <div className="group relative flex flex-col justify-between overflow-hidden p-6 rounded-2xl bg-neutral-100 border-2 border-slate-200 transition-all duration-300 ease-out hover:scale-[1.02] hover:bg-neutral-50">
-              <div className="flex items-center justify-between mb-4 relative z-10">
-                <span className="text-xs font-medium uppercase tracking-wider text-neutral-500">INTEGRATE</span>
-              </div>
-              <div className="mt-auto relative z-10">
-                <h3 className="font-medium mb-2 text-lg text-black">
-                  API-First Platform
-                </h3>
-                <p className="leading-relaxed text-sm text-neutral-600">
-                  Connect with your existing tools. Every feature accessible via our comprehensive API.
-                </p>
-              </div>
-            </div>
+              {/* Right Side - Floating UI */}
+              <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+                <BlurReveal delay={0.3}>
+                  <div className="relative w-full max-w-md">
+                    {/* Glass Card */}
+                    <div className="relative bg-black/20 backdrop-blur-xl border border-white/10 rounded-3xl p-6 shadow-2xl">
+                      {/* Floating Badge */}
+                      <div className="absolute -top-4 right-6 bg-[#0B2568] text-white text-sm font-medium px-4 py-2 rounded-xl rounded-tr-sm shadow-lg border border-white/10">
+                        What do I say next?
+                      </div>
 
-            {/* Large Card 2 - Relationship Mapping (Right, 2 cols x 2 rows) */}
-            <div className="lg:col-span-2 lg:row-span-2 group relative flex flex-col justify-between overflow-hidden p-6 rounded-2xl bg-blue-50 border-2 border-slate-200 transition-all duration-300 ease-out hover:scale-[1.02] hover:bg-blue-100/50">
-              <div className="flex items-center justify-between mb-4 relative z-10">
-                <span className="text-xs font-medium uppercase tracking-wider text-blue-700">INTELLIGENCE</span>
-              </div>
-              <div className="mt-auto relative z-10">
-                <h3 className="font-medium mb-2 text-xl lg:text-2xl text-blue-900">
-                  Relationship Mapping
-                </h3>
-                <p className="leading-relaxed text-base text-blue-700">
-                  Visualize connection paths and strength. Discover hidden opportunities through second and third-degree connections.
-                </p>
-              </div>
-            </div>
+                      {/* Content */}
+                      <div className="mt-4 mb-8">
+                        <p className="text-white text-lg leading-relaxed font-medium">
+                          "I hear you on the integration concerns—that's usually the first thing that comes up. We've actually built direct connectors for the tools you mentioned, and our average setup time is only half a day."
+                        </p>
+                      </div>
 
-            {/* Small Card - Privacy & Security (Bottom Left) */}
-            <div className="group relative flex flex-col justify-between overflow-hidden p-6 rounded-2xl bg-neutral-100 border-2 border-slate-200 transition-all duration-300 ease-out hover:scale-[1.02] hover:bg-neutral-50">
-              <div className="flex items-center justify-between mb-4 relative z-10">
-                <span className="text-xs font-medium uppercase tracking-wider text-neutral-500">SECURITY</span>
-              </div>
-              <div className="mt-auto relative z-10">
-                <h3 className="font-medium mb-2 text-lg text-black">
-                  Enterprise-Grade Privacy
-                </h3>
-                <p className="leading-relaxed text-sm text-neutral-600">
-                  Your data stays yours. SOC 2 compliant with end-to-end encryption.
-                </p>
-              </div>
-            </div>
+                      {/* Input Area */}
+                      <div className="relative group">
+                        <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 rounded-xl blur-sm transition-opacity opacity-0 group-hover:opacity-100" />
+                        <div className="relative flex items-center gap-3 bg-white/10 border border-white/10 rounded-xl px-4 py-3.5 text-white/60 transition-colors hover:bg-white/15 hover:border-white/20">
+                          <span className="text-sm">Ask,</span>
+                          <div className="flex items-center justify-center w-5 h-5 bg-white/20 rounded-[4px] border border-white/10">
+                            <Command className="w-3 h-3 text-white" />
+                          </div>
+                          <span className="text-sm">for Assist</span>
+                        </div>
+                      </div>
+                    </div>
 
-            {/* Small Card - Smart Notifications (Bottom Left) */}
-            <div className="group relative flex flex-col justify-between overflow-hidden p-6 rounded-2xl bg-neutral-100 border-2 border-slate-200 transition-all duration-300 ease-out hover:scale-[1.02] hover:bg-neutral-50">
-              <div className="flex items-center justify-between mb-4 relative z-10">
-                <span className="text-xs font-medium uppercase tracking-wider text-neutral-500">ALERTS</span>
-              </div>
-              <div className="mt-auto relative z-10">
-                <h3 className="font-medium mb-2 text-lg text-black">
-                  Smart Notifications
-                </h3>
-                <p className="leading-relaxed text-sm text-neutral-600">
-                  Get alerted to relevant opportunities. Customizable filters keep you focused.
-                </p>
+                    {/* Decorative Elements */}
+                    <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-500/30 blur-[100px] rounded-full" />
+                  </div>
+                </BlurReveal>
               </div>
             </div>
           </div>
         </div>
+
+        <BentoGrid />
       </div>
     </section>
   )

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Search, Users, Check, ChevronDown } from "lucide-react"
 import { BlurReveal } from "@/components/BlurReveal"
+import { Globe } from "@/components/ui/globe"
 
 const people = [
   { name: "Steve", initials: "ST", location: "Toronto, ON", role: "Construction Company Owner", relSummary: "2 Deals ongoing", openDeals: 3 },
@@ -15,8 +16,8 @@ const people = [
 export function FeaturesSection() {
   return (
     <section id="features" className="py-8 md:py-12 px-4 md:px-16 lg:px-32 xl:px-48">
-      <div className="bg-background rounded-[2rem] md:rounded-[3rem] py-12 md:py-24 px-4 md:px-12">
-        <div className="mx-auto max-w-6xl">
+      <div className="bg-background relative overflow-hidden rounded-[2rem] md:rounded-[3rem] py-12 md:py-24 px-4 md:px-12">
+        <div className="relative z-10 mx-auto max-w-6xl">
           {/* Header */}
           <div className="text-center mb-12 md:mb-16">
             <BlurReveal delay={0.1}>
@@ -132,7 +133,7 @@ export function FeaturesSection() {
           </div>
 
           {/* Feature Cards */}
-          <div className="grid gap-8 md:grid-cols-3 mt-24">
+          {/* <div className="grid gap-8 md:grid-cols-3 mt-24">
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center">
@@ -172,8 +173,10 @@ export function FeaturesSection() {
                 meaningful connections that simple word-matching would miss entirely.
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
+        <Globe className="top-28 opacity-40" />
+        <div className="pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_200%,rgba(0,0,0,0.2),rgba(255,255,255,0))]" />
       </div >
     </section >
   )
