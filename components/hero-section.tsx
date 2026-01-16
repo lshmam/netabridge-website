@@ -5,10 +5,17 @@ import { BlurReveal } from "@/components/BlurReveal"
 import Glow from "@/components/ui/glow"
 import { NetworkSearchInput } from "@/components/network-search-input"
 import { ParticlesBackground } from "@/components/ui/particles-background"
+import { Button } from "@/components/ui/button"
 
 import { motion } from "framer-motion"
 
 export function HeroSection() {
+  const handleJoinWaitlist = () => {
+    window.open(
+      "https://docs.google.com/forms/d/e/1FAIpQLSf1r7JL9dmo9fV7rFQqoSfGawHjDK6wXT2DqCuaEtScm14XVA/viewform?usp=publish-editor",
+      "_blank"
+    )
+  }
   return (
     <section className="py-2 px-2 md:py-4 md:px-4">
       <div className="relative min-h-[95vh] rounded-[2rem] md:rounded-[3rem] flex items-center justify-center bg-[#0a0a0a] overflow-hidden">
@@ -54,6 +61,20 @@ export function HeroSection() {
           {/* Network Search Component */}
           <BlurReveal delay={0.4}>
             <NetworkSearchInput />
+          </BlurReveal>
+
+          {/* Waitlist CTA Button */}
+          <BlurReveal delay={0.5}>
+            <div className="mt-8 flex flex-col items-center gap-3">
+              <Button
+                onClick={handleJoinWaitlist}
+                size="lg"
+                className="bg-white/10 hover:bg-white/20 text-white border border-white/20 hover:border-white/30 backdrop-blur-sm px-8 py-6 text-base font-medium rounded-full transition-all duration-300 hover:scale-105"
+              >
+                🚀 Join the Waitlist
+              </Button>
+              <p className="text-xs text-white/40">Limited early access available</p>
+            </div>
           </BlurReveal>
         </div>
 

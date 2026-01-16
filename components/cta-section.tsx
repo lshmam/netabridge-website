@@ -8,6 +8,14 @@ import { ParticlesBackground } from "@/components/ui/particles-background"
 import Glow from "@/components/ui/glow"
 
 export function CTASection() {
+  const handleActivateNetwork = () => {
+    // Scroll to waitlist section smoothly
+    const waitlistSection = document.querySelector('[data-section="waitlist"]')
+    if (waitlistSection) {
+      waitlistSection.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+  }
+
   return (
     <section className="py-2 px-2 md:py-4 md:px-4">
       <div className="relative bg-[#0a0a0a] rounded-[2rem] md:rounded-[3rem] py-12 md:py-24 px-4 md:px-12 overflow-hidden border border-white/10 w-full">
@@ -36,7 +44,11 @@ export function CTASection() {
           <BlurReveal delay={0.3}>
             {/* Wrapper for BorderBeam effect */}
             <div className="relative overflow-hidden rounded-full inline-block">
-              <Button size="lg" className="relative rounded-full px-10 py-6 text-lg bg-white text-black hover:bg-white/90">
+              <Button 
+                size="lg" 
+                onClick={handleActivateNetwork}
+                className="relative rounded-full px-10 py-6 text-lg bg-white text-black hover:bg-white/90 cursor-pointer"
+              >
                 Activate Your Network
               </Button>
               <BorderBeam size={200} duration={4} className="from-transparent via-purple-500 to-transparent" />
