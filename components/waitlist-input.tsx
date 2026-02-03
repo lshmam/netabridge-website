@@ -36,7 +36,7 @@ export function WaitlistInput({ className }: WaitlistInputProps) {
     // Example: fetch("https://formspree.io/f/YOUR_FORM_ID", { ... })
     async function onSubmit(values: z.infer<typeof formSchema>) {
         try {
-            const response = await fetch("https://formspree.io/f/mnjzkjjz", {
+            const response = await fetch("https://formspree.io/f/mykpqjga", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -71,6 +71,7 @@ export function WaitlistInput({ className }: WaitlistInputProps) {
 
                         <Input
                             {...form.register("email")}
+                            autoComplete="off"
                             placeholder="Enter your email for early access"
                             className="flex-1 border-none !bg-transparent !shadow-none focus-visible:ring-0 h-10 md:h-12 text-base md:text-lg text-white placeholder:text-gray-400"
                             disabled={form.formState.isSubmitting}
